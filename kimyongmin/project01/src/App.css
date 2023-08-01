@@ -1,14 +1,5 @@
-.contents {
-    display: flex;
-    border : 3px solid plum;
-}
-
-.list{
-    width: 400px;
-    border-right : 3px solid plum;
-    background-color: whitesmoke;
-}
 
 .logo{
     margin-left: 10px;
 }
+

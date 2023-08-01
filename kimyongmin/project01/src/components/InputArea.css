@@ -31,3 +31,28 @@
     background-color: purple;
   }
   
+.contents {
+  display: flex;
+  border : 3px solid plum;
+}
+
+
+#price{
+  margin-left: 85px;
+  margin-bottom: 10px;
+  border : 1px solid plum;
+}
+#news{  
+  margin-left : 10px;
+  border : 1px solid plum;
+  margin-top: 5px;
+}
+
+
+.banner{
+  width: 400px;
+  border-right : 3px solid plum;
+  background-color: whitesmoke;
+}
+
+  
