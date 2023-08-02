@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import seoulCafe from './seoulCafe.json'
 
 const { kakao } = window;
 
-
 const Map = () => {
+
+  const [currentMarker, setCurrentMarker] = useState(null); // 현재 열린 마커를 추적하는 상태
 
   useEffect(() => {
     const map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
@@ -15,6 +16,24 @@ const Map = () => {
       var maks = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(position.x, position.y)
+      });
+      
+      // 마커에 표시할 인포윈도우를 생성합니다 
+      const infowindow = new kakao.maps.InfoWindow({
+        content: position.gu // 인포윈도우에 표시할 내용
+      });
+
+      kakao.maps.event.addListener(maks, 'click', function () {
+        // 마커를 클릭했을 때 처리할 로직을 여기에 작성합니다.
+        // 예시로 position.gu 정보를 알림창으로 띄워보겠습니다.
+        // alert('구 정보: ' + position.gu);
+        if (currentMarker) {
+          infowindow.close();
+          console.log("info",currentMarker);
+        }        
+        infowindow.open(map,maks);
+        setCurrentMarker(infowindow)
+        
       });
 
       return maks;
@@ -30,12 +49,6 @@ const Map = () => {
 
     // 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
-
-
-
-
-
-
 
   }, [])
 
