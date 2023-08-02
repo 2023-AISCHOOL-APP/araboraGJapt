@@ -4,7 +4,7 @@ import Map from './Map'
 import './InputArea.css'
 
 
-const LeftArea = () => {
+const Contents = () => {
   return (
     <div>
         <div className='contents'>
@@ -15,4 +15,4 @@ const LeftArea = () => {
   )
 }
 
-export default LeftArea
+export default Contents

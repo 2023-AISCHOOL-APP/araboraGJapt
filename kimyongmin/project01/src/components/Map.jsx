@@ -9,7 +9,7 @@ const Map = () => {
   useEffect(() => {
     const map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
       center: new kakao.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표 
-      level: 12 // 지도의 확대 레벨 
+      level: 10 // 지도의 확대 레벨 
     });
     var markers = seoulCafe.positions.map(function (position, i) {
       var maks = new kakao.maps.Marker({
@@ -40,8 +40,8 @@ const Map = () => {
   }, [])
 
   return (
-    <div style={{ width: '100%', height: '800px' }}>
-      <div id="map" style={{ width: '100%', height: '100%' }}></div>
+    <div style={{ width: '700px', height: '800px' }}>
+      <div id="map" style={{ width: '700px', height: '100%' }}></div>
     </div>
   )
 }
