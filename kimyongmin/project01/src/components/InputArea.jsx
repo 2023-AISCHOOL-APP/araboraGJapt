@@ -1,30 +1,30 @@
-import React, { useState , useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Contents from './Contents';
 import './InputArea.css'; // InputArea.css 파일을 임포트
+import picSrc from '../img/2016-env073-0001.jpg'
 
 // useState 훅을 사용하여 상태 값과 상태를 업데이트하는 함수를 정의
 const InputArea = () => {
   const [inputValue, setInputValue] = useState('');
 
-// 입력 필드의 값이 변경시 호출되는 함수를 정의
+  // 입력 필드의 값이 변경시 호출되는 함수를 정의
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  const contentRef = useRef()
+  const contentRef = useRef();
 
-    //Contents 컴포넌트 보이기 여부를 상태로 관리
-    const [showContents, setShowContents] = useState(false);
+  // Contents 컴포넌트 보이기 여부를 상태로 관리
+  const [showContents, setShowContents] = useState(false);
 
   const addadr = () => {
     console.log(contentRef.current.defaultValue);
     setShowContents(true);
-  }
+  };
 
   return (
-  <div className="input-area-container">
-            <br/>
-      <div>
+    <div className="input-area-container" style={{ position: showContents ? 'initial' : 'fixed' }}>
+      <div className='input-area-box' style={{marginTop : showContents ? '0px' : '600px'}}>
         <input
           className="input-field"
           type="text"
@@ -33,16 +33,16 @@ const InputArea = () => {
           placeholder="검색하고자 하는 지역을 검색해주세요"
           ref={contentRef}
         />
-        <button onClick = {addadr} className="search-button" type="submit">
+        <button onClick={addadr} className="search-button" type="submit">
           검색
         </button>
       </div>
-      {showContents && <Contents/>}
-      {/* showContents 상태가 true일 때에만 Contents 컴포넌트를 렌더링 */}
+      {showContents ? <Contents /> : null} 
+      {/* showContents 상태가 true일 때에만 Contents 컴포넌트를 렌더링 <img src={picSrc} height= '500px'/> */}
 
     </div>
   );
-  
+
 };
 
 export default InputArea;

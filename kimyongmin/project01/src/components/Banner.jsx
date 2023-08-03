@@ -18,12 +18,13 @@ const Banner = () => {
 
   return (
     <div className='banner'>
+      <div className='button'>
         <button className={moveButton === 'price' ? 'active' : ''}
         onClick={() => buttonClick('price')} id='price'>시세</button>
 
         <button className={moveButton === 'news' ? 'active' : ''}
         onClick={() => buttonClick('news')} id='news'>뉴스</button>
-        
+      </div>
         {/* 해당 버튼의 상태에 따라 내용을 보여줍니다. */}
         {moveButton === 'price' && <Price></Price>}
         {moveButton === 'news' && <News></News>}

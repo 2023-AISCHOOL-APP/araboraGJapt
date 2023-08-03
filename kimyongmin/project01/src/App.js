@@ -1,6 +1,6 @@
 import React, { useState,useRef } from 'react';
 import InputArea from'./components/InputArea'
-import picSrc from './img/2016-env073-0001.jpg'
+
 import Logo from './img/ARABORALOGO.png'
 import './App.css'
 
@@ -12,13 +12,16 @@ function UserInput() {
     event.preventDefault();
   };
 
-
   return (
     <div className='app-container' onSubmit={handleSubmit}>
+        <div>
         <img className='logo' src={Logo} width='180px'/>
+        </div>
+
         <div className='input_area'>
           <InputArea/>
         </div>
+        
     </div>
   );
 }

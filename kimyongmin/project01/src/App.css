@@ -15,8 +15,8 @@ body {
   }
   
   .logo {
-    margin-bottom: 20px;
-    position: fixed;
+    margin-right: 850px;
+    margin-top: 20px;
     top: 10px;
     left: 10px;
   }
@@ -25,5 +25,5 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
-  
