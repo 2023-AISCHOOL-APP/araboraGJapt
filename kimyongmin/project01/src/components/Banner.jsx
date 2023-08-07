@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './InputArea.css'
+import './css/Banner.css'
 import Price from './Price'
 import News from './News'
 import Button from 'react-bootstrap/Button';

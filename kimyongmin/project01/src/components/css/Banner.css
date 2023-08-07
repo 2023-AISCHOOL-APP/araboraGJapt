@@ -1,0 +1,46 @@
+.search-button:hover {
+    background-color: purple;
+  }
+  
+  #price:hover {
+    background-color: purple;
+  }
+
+  #news:hover {
+    background-color: purple;
+  }
+
+  #price{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: plum;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #news{  
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: plum;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .banner{
+    width: 400px;
+    border-right : 3px solid plum;
+    background-color: whitesmoke;
+  
+  }
+  
+  .button{
+    display: flex;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+  }

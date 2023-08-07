@@ -1,0 +1,19 @@
+.ranking-area{
+    display: flex;
+    flex-direction: column;
+}
+
+.Cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+.best-card{
+    background-color: plum;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: honeydew;
   }
   
   .app-container {
@@ -14,16 +14,12 @@ body {
     height: 100%;
   }
   
-  .logo {
-    margin-right: 850px;
-    margin-top: 20px;
-    top: 10px;
-    left: 10px;
-  }
-  
   .input_area {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+  }
+
+  .sub-container{
+    margin-top: 100px;
   }

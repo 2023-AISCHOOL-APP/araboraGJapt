@@ -1,7 +1,7 @@
-import React, { useState,useRef } from 'react';
-import InputArea from'./components/InputArea'
-
-import Logo from './img/ARABORALOGO.png'
+import React from 'react';
+import InputArea from'./components/InputArea';
+import Header from './components/Header';
+import SubArea from './components/SubArea';
 import './App.css'
 
 
@@ -13,15 +13,17 @@ function UserInput() {
   };
 
   return (
-    <div className='app-container' onSubmit={handleSubmit}>
-        <div>
-        <img className='logo' src={Logo} width='180px'/>
-        </div>
-
-        <div className='input_area'>
-          <InputArea/>
-        </div>
-        
+    <div>
+      <div className='app-container' onSubmit={handleSubmit}>
+          <Header/>
+          <div className='input_area'>
+            <InputArea/>
+          </div>
+          <div className='sub-container'>
+          <SubArea/>
+          </div>
+          
+      </div>
     </div>
   );
 }

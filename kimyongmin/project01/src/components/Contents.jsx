@@ -1,15 +1,16 @@
-import React from 'react'
+import React  from 'react'
 import Banner from './Banner'
 import Map from './Map'
-import './InputArea.css'
+import './css/Contents.css'
 
 
-const Contents = () => {
+const Contents = ({address}) => {
+
   return (
     <div>
         <div className='contents'>
-            <Banner></Banner>
-            <Map></Map>
+            <Banner/>
+            <Map address={address}/>
         </div>
     </div>
   )
