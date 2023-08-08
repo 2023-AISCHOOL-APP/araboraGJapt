@@ -1,4 +1,9 @@
 .TradeTable{
-    margin-left: 0px;
-    
+    display: gird;
+    margin-left: 20%;
+    margin-top: 35%;
+    height: 60%;
+}
+.tablehead{
+    background-color: lavender;
 }

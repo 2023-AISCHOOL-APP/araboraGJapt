@@ -1,15 +1,13 @@
 import React from 'react'
 import TradeLog from './TradeLog'
 import Ranking from './Ranking'
+import './css/SubArea.css'
 
 const SubArea = () => {
   return (
-    <div>
-        <div>
+    <div className='subarea-container'>
+        <div className='subarea-container'>
             <Ranking/>
-        </div>
-        <br/>
-        <div>
             <TradeLog/>
         </div>
     </div>

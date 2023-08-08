@@ -7,7 +7,7 @@ import picSrc from '../img/2016-env073-0001.jpg'
 const InputArea = () => {
   const [inputValue, setInputValue] = useState('');
 
-  // 입력 필드의 값이 변경시 호출되는 함수를 정의
+  /** 입력 필드의 값이 변경시 호출되는 함수를 정의 */
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -19,6 +19,7 @@ const InputArea = () => {
 
   const [inputMap, setInputMap] = useState('');
 
+  /** 클릭이벤트 실행시 구현되는 함수 */
   const addadr = () => {
     console.log(contentRef.current.defaultValue);
     setInputMap(contentRef.current.defaultValue);
@@ -26,7 +27,7 @@ const InputArea = () => {
   
   };
 
-  //* enter키를 쳤을때 동작되는 함수
+  /** enter키를 쳤을때 동작되는 함수 */
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       addadr();
@@ -34,7 +35,7 @@ const InputArea = () => {
   };
 
   return (
-    <div className="input-area-container" style={{ position: showContents ? 'initial' : 'fixed' }}>
+    <div className="input-area-container" style={{ marginTop: showContents ? '0px' : '100px' }}>
       <div className='input-area-box' >
         <input
           className="input-field"

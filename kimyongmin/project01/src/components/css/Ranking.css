@@ -4,16 +4,33 @@
 }
 
 .Cards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1,10%);
+    grid-template-rows: minmax(auto);
   }
   
 
 .best-card{
     background-color: plum;
-    margin-left: 100px;
+    margin-left: 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 1000%;
+}
+.card-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+.card-text2{
+    margin: auto;
+}
+
+.crownimg{
+    display: grid;
+    margin-left: 300%;
 }

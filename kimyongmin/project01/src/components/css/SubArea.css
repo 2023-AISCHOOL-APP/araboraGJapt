@@ -1,0 +1,6 @@
+.subarea-container{
+    display: grid;
+    margin-right: 30px;
+    grid-template-columns: repeat(2, 60%);
+
+}
