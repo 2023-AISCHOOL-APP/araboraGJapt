@@ -9,7 +9,7 @@ const Contents = ({address}) => {
   return (
     <div>
         <div className='contents'>
-            <Banner/>
+            <Banner address={address}/>
             <Map address={address}/>
         </div>
     </div>

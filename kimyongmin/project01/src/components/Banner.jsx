@@ -7,10 +7,10 @@ import Fade from 'react-bootstrap/Fade';
 
 
 
-const Banner = () => {
+const Banner = ({address}) => {
   const [open, setOpen] = useState(false);
 
-  const [moveButton,setMoveButton] = useState('')
+  const [moveButton,setMoveButton] = useState('price')
 
   /**버튼 클릭시 작동하는 함수 */
   const buttonClick = (buttonName) => {
@@ -42,7 +42,7 @@ const Banner = () => {
       </div> {/* 해당 버튼의 상태에 따라 내용을 보여줍니다. */}
         <Fade in={open}>
           <div id="example-fade-text">
-          {moveButton === 'price' && <Price></Price>}
+          {moveButton === 'price' && <Price address={address}></Price>}
           </div>
         </Fade>
         <Fade in={open}>

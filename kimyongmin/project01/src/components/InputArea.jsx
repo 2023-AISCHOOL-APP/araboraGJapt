@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import Contents from './Contents';
 import './css/InputArea.css'; // InputArea.css 파일을 임포트
-import picSrc from '../img/2016-env073-0001.jpg'
+import GwangjuAdd from './dong positions.json'
+import {ClickMain} from '../Contexts/ClickMain'
 
 // useState 훅을 사용하여 상태 값과 상태를 업데이트하는 함수를 정의
 const InputArea = () => {
   const [inputValue, setInputValue] = useState('');
+
+  const {setShowSubarea} = useContext(ClickMain)
 
   /** 입력 필드의 값이 변경시 호출되는 함수를 정의 */
   const handleInputChange = (event) => {
@@ -19,12 +22,25 @@ const InputArea = () => {
 
   const [inputMap, setInputMap] = useState('');
 
+  const dongadd = []
+
+  for (let i=0; i<202; i++){
+    dongadd.push(GwangjuAdd.positions[i].dong)
+  }
+
   /** 클릭이벤트 실행시 구현되는 함수 */
   const addadr = () => {
-    console.log(contentRef.current.defaultValue);
-    setInputMap(contentRef.current.defaultValue);
-    setShowContents(true);
-  
+    const userInput = contentRef.current.defaultValue
+    console.log('입력값', userInput, '동모음', dongadd);
+    setInputMap(userInput);
+    setShowSubarea(false);
+    if (dongadd.includes(userInput)) 
+      {setShowContents(true);}
+      else{
+      alert('해당 지역은 검색 가능한 지역이 아닙니다.');
+      setShowContents(false); // Contents 컴포넌트 숨기기
+      return;
+    }
   };
 
   /** enter키를 쳤을때 동작되는 함수 */

@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState , useContext} from 'react'
 import GwangjuAdd from './dong positions.json'
+import { AddrContext } from '../Contexts/AddrContext'
+
 
 const { kakao } = window;
+
 
 
 const Map = ({ address }) => { // address를 프로프스로 받음
@@ -11,6 +14,8 @@ const Map = ({ address }) => { // address를 프로프스로 받음
   const [map, setMap] = useState(null); // map 상태 추가
 
   const [infoWindow, setInfoWindow] = useState(false); //인포윈도 열고닫기 구현
+
+  const {setPriceArea} = useContext(AddrContext)
 
 
   /** 사용자가 검색한 동과 json파일 동의 이름이 일치할시 json파일 좌표 구해주는 함수 */
@@ -29,26 +34,31 @@ const Map = ({ address }) => { // address를 프로프스로 받음
 
   useEffect(() => {
     if (map) {
-      var markers = GwangjuAdd.positions.map(function (position, i) {
-        var maks = new kakao.maps.Marker({
+      const markers = GwangjuAdd.positions.map(function (position, i) {
+        const maks = new kakao.maps.Marker({
           map: map,
           position: new kakao.maps.LatLng(position.x, position.y)
         });
     
+        const gu = position.gu
+        const dong = position.dong
+
         /**인포윈도우에 표시될 컨텐츠 함수 */
-        var infowindow = new kakao.maps.InfoWindow({
-          content: `<div>${position.gu} ${position.dong} <br/> 예측시세 : 1,000,000,000</div>`
+        const infowindow = new kakao.maps.InfoWindow({
+          content: `<div>${gu} ${dong} <br/> 예측시세 : 1,000,000,000</div>`
+
         });
+
+        
 
         // 마커를 클릭했을 때 정보 창을 표시하기 위해 클릭 이벤트 리스너를 추가
         kakao.maps.event.addListener(maks, 'click', function () {
           if (infoWindow) {
             infoWindow.close(); // 다른 인포윈도우 닫기
           }
-          
           infowindow.open(map, maks);
           setInfoWindow(infowindow); // 현재 열린 인포윈도우 업데이트
-        
+          setPriceArea(gu + dong);
         });
 
         return maks;
@@ -65,7 +75,6 @@ const Map = ({ address }) => { // address를 프로프스로 받음
       clusterer.addMarkers(markers);
     }
   }, [map, infoWindow]); // map 값이 변경될 때마다 실행
-
 
 
   return (
