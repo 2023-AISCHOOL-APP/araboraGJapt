@@ -69,7 +69,7 @@ const Map = ({ address }) => { // address를 프로프스로 받음
           infowindow.open(map, maks);
           setInfoWindow(infowindow); // 현재 열린 인포윈도우 업데이트
           dongPrice.pop(gu, dong, code)
-          setPriceArea(gu + dong);
+          setPriceArea(dong);
 
         });
 
@@ -86,7 +86,7 @@ const Map = ({ address }) => { // address를 프로프스로 받음
       // 클러스터러에 마커들을 추가합니다
       clusterer.addMarkers(markers);
     }
-    console.log("Price data:", MiraePrice.price);
+    //console.log("Price data:", MiraePrice.price);
 
     // 예시: 특정 코드에 대한 가격 가져오기
     const targetCode = 2914013200;
