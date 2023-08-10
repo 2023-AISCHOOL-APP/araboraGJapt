@@ -31,14 +31,15 @@ const InputArea = () => {
   /** 클릭이벤트 실행시 구현되는 함수 */
   const addadr = () => {
     const userInput = contentRef.current.defaultValue
-    console.log('입력값', userInput, '동모음', dongadd);
+    console.log('입력값', userInput);
     setInputMap(userInput);
-    setShowSubarea(false);
     if (dongadd.includes(userInput)) 
-      {setShowContents(true);}
+      {setShowContents(true);
+    setShowSubarea(false);}
       else{
       alert('해당 지역은 검색 가능한 지역이 아닙니다.');
-      setShowContents(false); // Contents 컴포넌트 숨기기
+      if (showContents == true){
+      setShowSubarea(false);} // Contents 컴포넌트 숨기기
       return;
     }
   };
