@@ -1,6 +1,5 @@
 import React, { useEffect, useState , useContext} from 'react'
 import GwangjuAdd from './dong positions.json'
-import MiraePrice from './data.json'
 import { AddrContext } from '../Contexts/AddrContext'
 import FuturePrice from './result2.json'
 
@@ -13,20 +12,14 @@ const Map = ({ address }) => {
   const { setPriceArea } = useContext(AddrContext);
   const [collectPrice, setCollectPrice] = useState()
   const dongPrice = [];
-  const miraecodes = MiraePrice.codes
 
-  // Reverse mapping 생성
-  const reverseMapping = {};
-  for (const key in miraecodes) {
-    const value = miraecodes[key];
-    reverseMapping[value] = key;
-  }
+  const reverseData = {}; // 뒤집어서 추가할 객체 생성
 
-  const reverseData = {};
-  for (const key in miraecodes) {
-    const value = miraecodes[key];
-    reverseData[value] = key;
-  }
+// FuturePrice 배열의 각 항목에 대해 반복
+for (const item of FuturePrice) {
+  const code = item.code; // 각 항목의 code 값
+  reverseData[code] = item; // reverseData 객체에 추가
+}
 
   //인포윈도우 스타일
   const infoWindowStyle = {
@@ -77,7 +70,7 @@ const Map = ({ address }) => {
           content: `
             <div style="${infoWindowStyle}">
               <p style="${titleStyle}">${markergu} ${markerdong}</p>
-              <p style="${priceStyle}" id="infoPrice">예측시세: ${miraePrice}</p>
+              <p style="${priceStyle}" id="infoPrice">예측시세(만원): ${miraePrice}</p>
             </div>`,
           removable: true
         });
@@ -97,7 +90,7 @@ const Map = ({ address }) => {
             // 인포윈도우 내부의 가격 정보 업데이트
             const infoPriceElement = document.getElementById('infoPrice');
             if (infoPriceElement) {
-              infoPriceElement.textContent = `1년 후 예측시세(만원): ${originalKey ? FuturePrice[originalKey].year1 : null}`;
+              infoPriceElement.textContent = `예측시세: ${originalKey ? reverseData[markercode].year1 : null}`;
             }
           } else {
             console.log('맞지 않는 키:', markercode);
