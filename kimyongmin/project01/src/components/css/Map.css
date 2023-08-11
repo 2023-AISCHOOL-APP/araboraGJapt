@@ -1,3 +1,7 @@
 .infowindow{
     border: 5px solid plum;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
