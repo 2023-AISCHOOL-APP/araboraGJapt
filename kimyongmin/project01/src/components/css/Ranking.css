@@ -30,6 +30,9 @@
 }
 .card-text2{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .crownimg{

@@ -1,6 +1,7 @@
 import Apart from '../img/apartment.png'
 import './css/Ranking.css'
 import Crown from '../img/crown.png'
+import FuturePrice from './result2.json'
 
 function Ranking() {
 
@@ -22,7 +23,7 @@ function Ranking() {
             남구 봉선동
             </h4>
             <h4 className='card-text2' style={textStyle}>
-            예측 시세 : 12,000,000,000
+            예측 시세 : 41557.41 <span>&nbsp;&nbsp;&nbsp;&nbsp;단위(만원)</span>
           </h4>
           <br/>
         </div>

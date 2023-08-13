@@ -38,18 +38,20 @@ const InputArea = () => {
     setShowSubarea(false);}
       else{
       alert('해당 지역은 검색 가능한 지역이 아닙니다.');
-      if (showContents == true){
+      if (showContents === true){
       setShowSubarea(false);} // Contents 컴포넌트 숨기기
       return;
     }
   };
 
   /** enter키를 쳤을때 동작되는 함수 */
-  const handleKeyDown = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
+      event.preventDefault(); // 기본 동작 막기
       addadr();
     }
   };
+  
 
   return (
     <div className="input-area-container" style={{ marginTop: showContents ? '0px' : '100px' }}>
@@ -60,7 +62,7 @@ const InputArea = () => {
           value={inputValue}
           onChange={handleInputChange}
           placeholder="검색하고자 하는 지역을 검색해주세요"
-          onKeyDown={handleKeyDown} // 키보드 Enter 이벤트 처리
+          onKeyPress={handleKeyPress} // 키보드 Enter 이벤트 처리
           ref={contentRef}
         />
         <button onClick={addadr} className="search-button" type="submit">
