@@ -7,7 +7,7 @@ import {ClickMain} from './Contexts/ClickMain'
 import './App.css'
 
 function UserInput() {
- 
+
   /** 폼 제출 시 호출되는 함수를 정의 */
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -68,7 +68,7 @@ const InputArea = () => {
         </button>
       </div>
       {showContents ? <Contents address={inputMap}/> : null} 
-      {/* showContents 상태가 true일 때에만 Contents 컴포넌트를 렌더링 <img src={picSrc} height= '500px'/> */}
+      {/* showContents 상태가 true일 때에만 Contents 컴포넌트를 렌더링 */}
 
     </div>
   );

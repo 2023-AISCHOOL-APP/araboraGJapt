@@ -32,12 +32,12 @@ const Banner = ({address}) => {
         >시세
         </Button>
         <Button
-          className={moveButton === 'news' ? 'active' : ''}
-          id='news'
-          onClick={() => buttonClick('news')}
+          className={moveButton === 'policy' ? 'active' : ''}
+          id='policy'
+          onClick={() => buttonClick('policy')}
           aria-controls="example-fade-text"
           aria-expanded={open}
-        >뉴스
+        >정책
         </Button>
       </div> {/* 해당 버튼의 상태에 따라 내용을 보여줍니다. */}
         <Fade in={open}>
@@ -47,7 +47,7 @@ const Banner = ({address}) => {
         </Fade>
         <Fade in={open}>
           <div id="example-fade-text">
-          {moveButton === 'news' && <News></News>}
+          {moveButton === 'policy' && <News policybutton={moveButton}></News>}
           </div>
         </Fade>
 

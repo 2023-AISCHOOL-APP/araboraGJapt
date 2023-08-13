@@ -1,5 +1,5 @@
 import React, { useEffect, useState , useContext} from 'react'
-import GwangjuAdd from './dong positions.json'
+import GwangjuAdd from './dong positionsfinal.json'
 import { AddrContext } from '../Contexts/AddrContext'
 import FuturePrice from './result2.json'
 
@@ -82,7 +82,7 @@ for (const item of FuturePrice) {
           infowindow.open(map, maks);
           setInfoWindow(infowindow);
           dongPrice.pop(markergu, markerdong, markercode);
-          setPriceArea(markerdong);
+          setPriceArea(reverseData[markercode]);
   
           const originalKey = reverseData[markercode];
           if (originalKey !== undefined) {
