@@ -14,7 +14,6 @@ function Ranking() {
   return (
     <div className="Cards">
       <img src={Crown} width='100px' className='crownimg'/>
-
       <div className='best-card' id='card1' >
         <h3 style={textStyle}>광주광역시 예측 최고가 지역</h3>
         <img variant="top" src={Apart} width='100px'/>

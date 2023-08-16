@@ -5,11 +5,10 @@ import FuturePrice from './result2.json'
 import Graph from './Graph'
 import './css/Price.css'
 
-
 const Price = ({ address }) => {
   const { priceArea } = useContext(AddrContext);
 
-  /** Map컴포넌트에서 받아온 오브젝트에서 코드만 따로 빼기 */
+/** Map컴포넌트에서 받아온 오브젝트에서 코드만 따로 빼기 */
   const sellectCode = priceArea.code
 
 /**광주 지역 이름 json파일 접근 */
@@ -33,6 +32,17 @@ for (const item of FuturePrice) {
   reverseData[code] = item; // reverseData 객체에 추가
 }
 
+/** 검색창 입력 동에 대한 코드와 시세 json 파일 코드 비교 및 인덱싱 */
+useEffect(() => {
+  if (sellectCode && dataCode) {
+    for (let i = 0; i < 86; i++) {
+      if (sellectCode === dataCode[i].code) {
+        setCollectCode(dataCode[i]);
+      }
+    }
+  }
+}, [sellectCode, dataCode]);
+
   /** Map컴포넌트에서 마커 클릭 시 코드와 시세 json 파일 코드 비교 및 인덱싱 */
   useEffect(() => {
     if (add && dataCode) { // add와 dataCode가 모두 정의되어 있는 경우에만 실행
@@ -44,18 +54,6 @@ for (const item of FuturePrice) {
       }
     }
   }, [add, dataCode]);
-
-
-/** 검색창 입력 동에 대한 코드와 시세 json 파일 코드 비교 및 인덱싱 */
-useEffect(() => {
-  if (sellectCode && dataCode) {
-    for (let i = 0; i < 86; i++) {
-      if (sellectCode === dataCode[i].code) {
-        setCollectCode(dataCode[i]);
-      }
-    }
-  }
-}, [sellectCode, dataCode]);
 
 return (
 <div className="price-box">
@@ -109,6 +107,9 @@ return (
         </div>
 
       <Graph data={priceArea}/>
+      <div className='price84' style={{ fontSize: '12px' }}>
+        ※ 84㎡ 기준
+      </div>
       </div>
   );
 };

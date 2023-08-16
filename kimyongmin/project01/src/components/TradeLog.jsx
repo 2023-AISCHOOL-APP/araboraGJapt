@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import './css/TradeLog.css';
 import ApartTrade from './aparttrade.json';
+import { FcHome } from "react-icons/fc";
 
 function TradeLog() {
   const tableStyle = {
     borderCollapse: 'collapse',
     border: '5px solid plum',
     tableLayout: 'fixed', // 고정 테이블 레이아웃 설정
-    width: '150%' // 초기에는 화면 전체 너비로 설정
+    width: '130%' // 초기에는 화면 전체 너비로 설정
   };
 
   const cellStyle = {
@@ -31,28 +32,34 @@ function TradeLog() {
   }, []);
 
   return (
-    <Table style={tableStyle} className='TradeTable'>
-      <thead>
-        <tr className='tablehead'>
-          <th className='table-cell' style={cellStyle}>지역</th>
-          <th className='table-cell' style={cellStyle}>아파트</th>
-          <th className='table-cell' style={cellStyle}>면적(㎡)</th>
-          <th className='table-cell' style={cellStyle}>거래일자</th>
-          <th className='table-cell' style={cellStyle}>거래 값(만원)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {ApartTrade.slice(displayedData, displayedData + 5).map((item, index) => (
-          <tr key={index}>
-            <td className='table-cell' style={cellStyle}>{item.address}</td>
-            <td className='table-cell' style={cellStyle}>{item.apart}</td>
-            <td className='table-cell' style={cellStyle}>{item.size}</td>
-            <td className='table-cell' style={cellStyle}>{item.date}</td>
-            <td className='table-cell' style={cellStyle}>{item.price}</td>
+    <div className='tradelog-container'>
+      <div className="trade-log-title">
+        <FcHome size='35'></FcHome>
+        &nbsp;광주지역 최근 실거래 내역
+      </div>
+      <Table style={tableStyle} className='TradeTable'>
+        <thead>
+          <tr className='tablehead'>
+            <th className='table-cell' style={cellStyle} width='120px'>지역</th>
+            <th className='table-cell' style={cellStyle}>아파트</th>
+            <th className='table-cell' style={cellStyle} width='100px'>면적(㎡)</th>
+            <th className='table-cell' style={cellStyle} width='100px'>거래일자</th>
+            <th className='table-cell' style={cellStyle} width='100px'>거래 값(만원)</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {ApartTrade.slice(displayedData, displayedData + 5).map((item, index) => (
+            <tr key={index}>
+              <td className='table-cell' style={cellStyle}>{item.address}</td>
+              <td className='table-cell' style={cellStyle}>{item.apart}</td>
+              <td className='table-cell' style={cellStyle}>{item.size}</td>
+              <td className='table-cell' style={cellStyle}>{item.date}</td>
+              <td className='table-cell' style={cellStyle}>{item.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
   );
 }
 

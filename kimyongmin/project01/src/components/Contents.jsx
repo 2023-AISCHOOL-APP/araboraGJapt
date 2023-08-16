@@ -4,13 +4,18 @@ import Map from './Map'
 import './css/Contents.css'
 
 
-const Contents = ({address}) => {
+const Contents = ({ inputMap, showContents }) => {
 
+  const childProps = {
+    inputMap: inputMap,
+    showContents: showContents,
+  };
+  
   return (
     <div>
         <div className='contents'>
-            <Banner address={address}/>
-            <Map address={address}/>
+            <Banner address={inputMap}/>
+            <Map {...childProps}/>
         </div>
     </div>
   )

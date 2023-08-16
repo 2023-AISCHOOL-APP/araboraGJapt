@@ -13,7 +13,7 @@ const Graph = ({ data }) => {
   ];
 
   return (
-    <LineChart width={300} height={300} data={graphData}>
+    <LineChart width={270} height={300} data={graphData}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="date" tick={{ fontSize: 12 }}/>
       <YAxis

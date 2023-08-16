@@ -51,6 +51,10 @@ const InputArea = () => {
       addadr();
     }
   };
+  const childProps = {
+    inputMap: inputMap,
+    showContents: showContents,
+  };
   
 
   return (
@@ -69,7 +73,7 @@ const InputArea = () => {
           검색
         </button>
       </div>
-      {showContents ? <Contents address={inputMap}/> : null} 
+      {showContents ? <Contents {...childProps}/> : null} 
       {/* showContents 상태가 true일 때에만 Contents 컴포넌트를 렌더링 */}
 
     </div>

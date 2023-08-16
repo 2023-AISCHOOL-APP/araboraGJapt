@@ -2,16 +2,20 @@ import React, { useEffect, useState , useContext} from 'react'
 import GwangjuAdd from './dong positionsfinal.json'
 import { AddrContext } from '../Contexts/AddrContext'
 import FuturePrice from './result2.json'
+import RedMarker from '../img/redmarker.png'
 
 const { kakao } = window;
 
-const Map = ({ address }) => {
-  const mapAdd = address;
+const Map = ({ inputMap, showContents }) => {
+  const mapAdd = inputMap;
   const [map, setMap] = useState(null);
   const [infoWindow, setInfoWindow] = useState(false);
   const { setPriceArea } = useContext(AddrContext);
   const [collectPrice, setCollectPrice] = useState()
+  const [currentAddress, setCurrentAddress] = useState(inputMap);
   const dongPrice = [];
+  
+  const redMarkerImageURL = RedMarker
 
   const reverseData = {}; // 뒤집어서 추가할 객체 생성
 
@@ -23,34 +27,55 @@ for (const item of FuturePrice) {
 
   //인포윈도우 스타일
   const infoWindowStyle = {
-    backgroundColor: 'plum',
-    borderRadius: '5px',
-    padding: '10px',
-    width: '200px'
+    backgroundColor: 'purple', // 배경색 변경
+    color: 'white', // 글자색 변경
+    borderRadius: '10px', // 더 둥글게 변경
+    padding: '15px', // 패딩값 증가
+    width: '250px', // 너비 조정
+    fontSize: '14px', // 글자 크기 변경
   };
 
   const titleStyle = {
     margin: '0',
-    fontSize: '16px',
-    fontWeight: 'bold'
+    fontSize: '18px',
+    fontWeight: 'bold',
+    textAlign: 'center', // 가운데 정렬
+    marginBottom: '10px', // 아래 여백 추가
   };
 
   const priceStyle = {
-    margin: '5px 0'
+    margin: '5px 0',
+    fontSize: '14px', // 글자 크기 변경
   };
 
-  const add = GwangjuAdd.positions.find((add) => add.dong === mapAdd);
+  useEffect(() => {
+    if (currentAddress) {
+      const add = GwangjuAdd.positions.find((add) => add.dong === currentAddress);
+      if (add) {
+        const mapInstance = new kakao.maps.Map(document.getElementById('map'), {
+          center: new kakao.maps.LatLng(add.x, add.y),
+          level: 6,
+        });
+
+        setMap(mapInstance);
+    
+      }
+    }
+  }, [currentAddress]);
 
   useEffect(() => {
-    if (add) {
-      const mapInstance = new kakao.maps.Map(document.getElementById('map'), {
-        center: new kakao.maps.LatLng(add.x, add.y),
-        level: 6
-      });
-      
-      setMap(mapInstance);
+    if (currentAddress) {
+      const add = GwangjuAdd.positions.find((add) => add.dong === currentAddress);
+      if (add) {
+        const mapInstance = new kakao.maps.Map(document.getElementById('map'), {
+          center: new kakao.maps.LatLng(add.x, add.y),
+          level: 6,
+        });
+
+        setMap(mapInstance);
+      }
     }
-  }, [add]);
+  }, [currentAddress]);
 
   useEffect(() => {
     if (map) {
@@ -59,6 +84,13 @@ for (const item of FuturePrice) {
           map: map,
           position: new kakao.maps.LatLng(position.x, position.y)
         });
+
+        if (position.dong === inputMap) {
+          maks.setImage(new kakao.maps.MarkerImage(
+            redMarkerImageURL,
+            new kakao.maps.Size(30, 50)
+          ));
+        }
   
         const markergu = position.gu;
         const markerdong = position.dong;
@@ -69,7 +101,7 @@ for (const item of FuturePrice) {
         const infowindow = new kakao.maps.InfoWindow({
           content: `
             <div style="${infoWindowStyle}">
-              <p style="${titleStyle}">${markergu} ${markerdong}</p>
+              <p style="${titleStyle}; text-align: center;">${markergu} ${markerdong}</p>
               <p style="${priceStyle}" id="infoPrice">예측시세(만원): ${miraePrice}</p>
             </div>`,
           removable: true
@@ -90,11 +122,12 @@ for (const item of FuturePrice) {
             // 인포윈도우 내부의 가격 정보 업데이트
             const infoPriceElement = document.getElementById('infoPrice');
             if (infoPriceElement) {
-              infoPriceElement.textContent = `예측시세: ${originalKey ? reverseData[markercode].year1 : null}`;
+              infoPriceElement.textContent = `예측시세(만원): ${originalKey ? reverseData[markercode].year1 : null}`;
             }
           } else {
             console.log('맞지 않는 키:', markercode);
           }
+          infowindow.setZIndex(1);
         });
   
         return maks;
@@ -108,13 +141,17 @@ for (const item of FuturePrice) {
   
       clusterer.addMarkers(markers);
     }
-  }, [map, infoWindow, reverseData]);
+  }, [map, infoWindow, reverseData, currentAddress]);
   
+  useEffect(() => {
+    // 프롭스로 받아온 inputMap 값이 변경되면 현재 주소 상태 업데이트
+    setCurrentAddress(inputMap);
+  }, [inputMap]);
 
 
   return (
-    <div style={{ width: '700px', height: '800px' }}>
-      <div id="map" style={{ width: '700px', height: '100%' }}></div>
+    <div style={{ width: '695px', height: '810px' }}>
+      <div id="map" style={{ width: '800px', height: '100%' }}></div>
     </div>
   );
 };
