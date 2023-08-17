@@ -13,6 +13,7 @@ const Map = ({ inputMap, showContents }) => {
   const { setPriceArea } = useContext(AddrContext);
   const [collectPrice, setCollectPrice] = useState()
   const [currentAddress, setCurrentAddress] = useState(inputMap);
+  const [windowPrice, setWindowPrice] = useState('')
   const dongPrice = [];
   
   const redMarkerImageURL = RedMarker
