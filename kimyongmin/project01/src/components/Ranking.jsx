@@ -22,7 +22,7 @@ function Ranking() {
             남구 봉선동
             </h4>
             <h4 className='card-text2' style={textStyle}>
-            예측 시세 : 41557.41 <span>&nbsp;&nbsp;&nbsp;&nbsp;단위(만원)</span>
+            예측 시세 : 41557 <span>&nbsp;&nbsp;&nbsp;&nbsp;단위(만원)</span>
           </h4>
           <br/>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState , useContext} from 'react'
 import GwangjuAdd from './dong positionsfinal.json'
 import { AddrContext } from '../Contexts/AddrContext'
-import FuturePrice from './result2.json'
+import FuturePrice from './finalresult.json'
 import RedMarker from '../img/redmarker.png'
 
 const { kakao } = window;
@@ -115,6 +115,7 @@ for (const item of FuturePrice) {
           setInfoWindow(infowindow);
           dongPrice.pop(markergu, markerdong, markercode);
           setPriceArea(reverseData[markercode]);
+          
   
           const originalKey = reverseData[markercode];
           if (originalKey !== undefined) {

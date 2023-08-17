@@ -37,7 +37,7 @@ const InputArea = () => {
     if (dongadd.includes(userInput)) {
       setShowContents(true);
       setShowSubarea(false);
-  
+      
       try {
         const response = await axios.post('/api/predict', { input: userInput }); // await로 응답을 기다림
         const predictions = response.data;
@@ -53,7 +53,7 @@ const InputArea = () => {
       if (showContents === true) {
         setShowSubarea(false); // Contents 컴포넌트 숨기기
       }
-      return;
+      return; 
     }
   };
 

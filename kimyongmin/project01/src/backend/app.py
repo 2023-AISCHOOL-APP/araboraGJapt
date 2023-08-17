@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # 모델 로드
-with open('src/backend/linear.pkl', 'rb') as model_file:
+with open('./linear.pkl', 'rb') as model_file:
     loaded_model = pickle.load(model_file)
 
 @app.route('/api/predict', methods=['POST'])

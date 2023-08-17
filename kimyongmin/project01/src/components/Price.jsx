@@ -1,7 +1,7 @@
 import React, {useContext , useEffect, useState} from 'react'
 import { AddrContext } from '../Contexts/AddrContext'
 import GwangjuAdd from './dong positionsfinal.json'
-import FuturePrice from './result2.json'
+import FuturePrice from './finalresult.json'
 import Graph from './Graph'
 import './css/Price.css'
 
